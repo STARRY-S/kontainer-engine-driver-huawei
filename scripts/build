@@ -8,11 +8,15 @@ cd $(dirname $0)/..
 mkdir -p bin
 [ "$(uname)" != "Darwin" ] && LINKFLAGS="-linkmode external -extldflags -static -s"
 
-CGO_ENABLED=0 go build -ldflags "-X main.VERSION=$VERSION $LINKFLAGS" -o bin/kontainer-engine-driver-huawei
+if [ "$OAUTH_TOKEN" != "" ]; then
+    git config --global url."https://${OAUTH_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
+fi
+
+CGO_ENABLED=0 GOPRIVATE="github.com/cnrancher" go build -ldflags "-X main.VERSION=$VERSION $LINKFLAGS" -o bin/kontainer-engine-driver-huawei
 echo built default
 for i in darwin linux
 do
     export GOOS=$i
-    go build -o bin/kontainer-engine-driver-huawei-$i
+    GOPRIVATE="github.com/cnrancher" go build -o bin/kontainer-engine-driver-huawei-$i
     echo built $i
 done

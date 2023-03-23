@@ -4,7 +4,10 @@ kind: pipeline
 steps:
   - name: build
     privileged: true
-    image: rancher/dapper:1.11.2
+    image: rancher/dapper:v0.6.0
+    environment:
+      OAUTH_TOKEN:
+        from_secret: github_token
     volumes:
       - name: docker
         path: /var/run/docker.sock
