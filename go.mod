@@ -1,10 +1,11 @@
 module github.com/rancher/kontainer-engine-driver-huawei
 
-go 1.17
+go 1.19
 
 replace (
-	github.com/rancher/rancher/pkg/apis => github.com/rancher/rancher/pkg/apis v0.0.0-20220308000653-f2a4147cf98d
-	github.com/rancher/rancher/pkg/client => github.com/rancher/rancher/pkg/client v0.0.0-20220308000653-f2a4147cf98d
+	github.com/rancher/rancher => github.com/cnrancher/pandaria v0.0.0-20230208043957-dd70dcb4c6e9
+	github.com/rancher/rancher/pkg/apis => github.com/cnrancher/pandaria/pkg/apis v0.0.0-20230208043957-dd70dcb4c6e9
+	github.com/rancher/rancher/pkg/client => github.com/cnrancher/pandaria/pkg/client v0.0.0-20230208043957-dd70dcb4c6e9
 	k8s.io/api => k8s.io/api v0.22.3
 	k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.22.3
 	k8s.io/apimachinery => k8s.io/apimachinery v0.22.3
@@ -34,12 +35,12 @@ replace (
 )
 
 require (
-	github.com/huaweicloud/huaweicloud-sdk-go-v3 v0.0.98
+	github.com/huaweicloud/huaweicloud-sdk-go-v3 v0.0.100
 	github.com/pkg/errors v0.9.1
 	github.com/rancher/rancher v0.0.0-20220308000653-f2a4147cf98d
-	github.com/sirupsen/logrus v1.8.1
-	k8s.io/api v0.23.3
-	k8s.io/apimachinery v0.23.3
+	github.com/sirupsen/logrus v1.9.0
+	k8s.io/api v0.24.5
+	k8s.io/apimachinery v0.24.5
 	k8s.io/client-go v12.0.0+incompatible
 )
 
@@ -47,10 +48,10 @@ require (
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/go-logr/logr v1.2.0 // indirect
+	github.com/go-logr/logr v1.2.3 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
-	github.com/google/go-cmp v0.5.6 // indirect
+	github.com/google/go-cmp v0.5.8 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
 	github.com/googleapis/gnostic v0.5.5 // indirect
 	github.com/imdario/mergo v0.3.12 // indirect
@@ -62,28 +63,28 @@ require (
 	github.com/prometheus/client_model v0.2.0 // indirect
 	github.com/prometheus/common v0.32.1 // indirect
 	github.com/prometheus/procfs v0.7.3 // indirect
-	github.com/rancher/lasso v0.0.0-20220303220250-a429cb5cb9c9 // indirect
-	github.com/rancher/norman v0.0.0-20220107203912-4feb41eafabd // indirect
-	github.com/rancher/rke v1.3.8-rc5 // indirect
+	github.com/rancher/lasso v0.0.0-20220628160937-749b3397db38 // indirect
+	github.com/rancher/norman v0.0.0-20220627222520-b74009fac3ff // indirect
+	github.com/rancher/rke v1.4.2 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	golang.org/x/crypto v0.0.0-20220411220226-7b82a4e95df4 // indirect
-	golang.org/x/net v0.0.0-20220107192237-5cfca573fb4d // indirect
-	golang.org/x/oauth2 v0.0.0-20211104180415-d3ed0bb246c8 // indirect
-	golang.org/x/sys v0.0.0-20220114195835-da31bd327af9 // indirect
-	golang.org/x/term v0.0.0-20210615171337-6886f2dfbf5b // indirect
+	golang.org/x/crypto v0.0.0-20220622213112-05595931fe9d // indirect
+	golang.org/x/net v0.0.0-20220722155237-a158d28d115b // indirect
+	golang.org/x/oauth2 v0.0.0-20220628200809-02e64fa58f26 // indirect
+	golang.org/x/sys v0.0.0-20220721230656-c6bc011c0c49 // indirect
+	golang.org/x/term v0.0.0-20220526004731-065cf7ba2467 // indirect
 	golang.org/x/text v0.3.7 // indirect
-	golang.org/x/time v0.0.0-20210723032227-1f47c861a9ac // indirect
+	golang.org/x/time v0.0.0-20220609170525-579cf78fd858 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
-	google.golang.org/genproto v0.0.0-20220107163113-42d7afdf6368 // indirect
-	google.golang.org/grpc v1.43.0 // indirect
-	google.golang.org/protobuf v1.27.1 // indirect
+	google.golang.org/genproto v0.0.0-20220720214146-176da50484ac // indirect
+	google.golang.org/grpc v1.48.0 // indirect
+	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/ini.v1 v1.66.6 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
-	k8s.io/apiserver v0.23.3 // indirect
-	k8s.io/klog/v2 v2.30.0 // indirect
-	k8s.io/utils v0.0.0-20211116205334-6203023598ed // indirect
-	sigs.k8s.io/structured-merge-diff/v4 v4.2.1 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
+	k8s.io/apiserver v0.24.5 // indirect
+	k8s.io/klog/v2 v2.70.1 // indirect
+	k8s.io/utils v0.0.0-20220728103510-ee6ede2d64ed // indirect
+	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
