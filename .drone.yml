@@ -24,7 +24,6 @@ steps:
       files:
         - "bin/kontainer-engine-driver-huawei-*"
     when:
-      branch: master
       event: tag
       ref:
         exclude: [ refs/tags/*rc* ]
@@ -40,7 +39,6 @@ steps:
         - "bin/kontainer-engine-driver-huawei-*"
       prerelease: true
     when:
-      branch: master
       event: tag
       ref:
         include: [ refs/tags/*rc* ]
