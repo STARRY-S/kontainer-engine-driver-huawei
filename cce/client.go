@@ -2,6 +2,8 @@ package cce
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
 	"time"
 
 	"github.com/huaweicloud/huaweicloud-sdk-go-v3/core/auth/basic"
@@ -32,6 +34,8 @@ func GetCCEServiceClient(baseClient *common.Client) *huawei_cce.CceClient {
 func CreateCluster(ctx context.Context, cceClient *huawei_cce.CceClient, state *common.State) (*model.ShowClusterResponse, error) {
 	logrus.Info("creating cluster...")
 	clusterReq := common.GetClusterRequestFromState(*state)
+	data, _ := json.MarshalIndent(clusterReq, "", "    ")
+	fmt.Printf("XXXX clusterReq: %s\n", string(data))
 	rtn, err := cceClient.CreateCluster(clusterReq)
 	if err != nil {
 		return nil, errors.Wrap(err, "error creating cluster")
@@ -81,6 +85,8 @@ func DeleteCluster(cceClient *huawei_cce.CceClient, clusterID string) (*model.De
 func CreateNodes(ctx context.Context, clusterID string, cceClient *huawei_cce.CceClient, state *common.State, count int32) (*model.CreateNodeResponse, error) {
 	logrus.Infof("creating worker nodes...")
 	nodeReq := getNodeRequirement(*state, count, clusterID)
+	data, _ := json.MarshalIndent(nodeReq, "", "    ")
+	fmt.Printf("XXXX nodeReq: %s\n", string(data))
 	nodeResponse, err := cceClient.CreateNode(nodeReq)
 	if err != nil {
 		logrus.WithError(err).Warnf("trying to create node for cluster %s again", state.ClusterID)

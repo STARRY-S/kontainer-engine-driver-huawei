@@ -145,10 +145,14 @@ func (d *CCEDriver) Create(ctx context.Context, opts *types.DriverOptions, clust
 
 	var cceClusterInfo *model.ShowClusterResponse
 	cleanUpResources = append(cleanUpResources, "cluster")
+	data, _ := json.MarshalIndent(state, "", "  ")
+	logrus.Infof("XXXX createCluster state: %v", string(data))
 	if cceClusterInfo, err = cce.CreateCluster(ctx, cceClient, &state); err != nil {
 		return nil, err
 	}
 
+	data, _ = json.MarshalIndent(state, "", "  ")
+	logrus.Infof("XXXX CreateNodes state: %v", string(data))
 	if _, err := cce.CreateNodes(ctx, *cceClusterInfo.Metadata.Uid, cceClient, &state, int32(state.NodeConfig.NodeCount)); err != nil {
 		return nil, err
 	}
